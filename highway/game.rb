@@ -1,7 +1,5 @@
 module Highway
 	class Game
-		DELAY = 0.1
-
 		attr_accessor :canvas, :road, :car
 
 		def initialize
@@ -13,34 +11,8 @@ module Highway
 		end
 
 		def start
-			puts @canvas.paint
-
-			while @car.can? :north
-				@car.north
-				redraw
-			end
-
-			while @car.can? :west
-				@car.west
-				redraw
-			end
-
-			while @car.can? :south
-				@car.south
-				redraw
-			end
-
-			while @car.can? :east
-				@car.east
-				redraw
-			end
-
-			start
-		end
-
-		def redraw
-			sleep DELAY
-			puts @canvas.paint
+			@canvas.draw
+			@car.drive_around
 		end
 	end
 end

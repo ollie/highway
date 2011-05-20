@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Highway
 	class Canvas
+		DELAY = 0.1
 		# ┌─┬─┐
 		# │ │ │
 		# ├─┼─┤
@@ -22,6 +23,7 @@ module Highway
 
 		alias_method :original_to_s, :to_s
 		attr_reader :map
+		attr_accessor :car
 
 		def initialize( map )
 			@map = map
@@ -47,6 +49,15 @@ module Highway
 			[ header, body, footer ].join "\n"
 		end
 
+		def draw
+			puts paint
+		end
+
+		def redraw
+			sleep DELAY
+			puts paint
+		end
+
 		private
 
 			# ┌─┬──────────────┐
@@ -60,11 +71,6 @@ module Highway
 				o << NORTH_SOUTH + ' ' + NORTH_SOUTH + (0..cols - 1).to_a.map { |i| i.to_s.split( // ).last }.join.ljust( cols ) + NORTH_SOUTH
 				o << NORTH_EAST_SOUTH + EAST_WEST + NORTH_EAST_SOUTH_WEST + EAST_WEST * cols + NORTH_SOUTH_WEST
 				o.join "\n"
-			end
-
-			# └─┴──────────────┘
-			def footer
-				NORTH_EAST + EAST_WEST + NORTH_EAST_WEST + EAST_WEST * cols + NORTH_WEST
 			end
 
 			# │.│    ...       │
@@ -83,6 +89,14 @@ module Highway
 					i += 1
 					o.join
 				end.join "\n"
+			end
+
+			# └─┴──────────────┘
+			def footer
+				o = []
+				o << NORTH_EAST + EAST_WEST + NORTH_EAST_WEST + EAST_WEST * cols + NORTH_WEST
+				o << "Fuel: #{ @car.fuel } %"
+				o.join "\n"
 			end
 
 			def symbol_for( piece )

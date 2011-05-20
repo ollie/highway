@@ -5,6 +5,8 @@ map = Highway::Map.new 'map2.txt'
 #puts map.paint
 canvas = Highway::Canvas.new map
 car = Highway::Car.new
+car.canvas = canvas
+canvas.car = car
 road = Highway::Road.new
 road.init_pieces canvas
 canvas.place_pieces road.pieces
