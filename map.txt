@@ -1,0 +1,12 @@
+***************************
+*           x             *
+*           x   xxxxx     *
+*           x   x   x     *
+*           xxxxx   xxxxxx*
+*           x   x   x     *
+*xxxxxxxxxxxxxxxxxxxxxxxxx*
+*    x      x             *
+*    x      x             *
+*           x             *
+*           x             *
+***************************
