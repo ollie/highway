@@ -1,18 +1,21 @@
 module Highway
 	class Car
-		attr_accessor :piece, :canvas
-		attr_accessor :fuel
+		MAX_FUEL = 100
+
+		attr_accessor :piece, :canvas, :fuel
 
 		def initialize
-			@fuel = 100
+			max_fuel
 		end
 
 		def drive_on( piece )
+			raise NoRoadException unless piece.is_a? Piece
 			raise NoFuelException if @fuel <= 0
 			@piece.car = nil if @piece
 			@piece = piece
 			@piece.car = self
 			@fuel -= 1
+			max_fuel if @piece.station
 		end
 
 		def can?( direction )
@@ -52,5 +55,11 @@ module Highway
 				13.times { east }
 			end
 		end
+
+		private
+
+			def max_fuel
+				@fuel = MAX_FUEL
+			end
 	end
 end

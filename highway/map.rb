@@ -27,7 +27,7 @@ module Highway
 
 			def parse_data
 				@raw.each do |line|
-					matches = line.match /^\*([ x]+)\*$/
+					matches = line.match /^\*([ xS]+)\*$/
 					next if matches.nil? or matches[1].nil?
 					pieces = matches[1].split( // ).map { |i| i.strip.empty? ? nil : i }
 					@rows += 1
@@ -40,7 +40,12 @@ module Highway
 				@data.each_with_index do |row, row_index|
 					row.each_with_index do |col, col_index|
 						next if col.nil?
-						@coords << [ row_index, col_index ]
+						h = {
+							:row => row_index,
+							:col => col_index,
+							:station => col == 'S',
+						}
+						@coords << h
 					end
 				end
 			end

@@ -20,6 +20,7 @@ module Highway
 		NORTH_EAST_SOUTH_WEST	= '┼'
 		ORPHAN					= 'x'
 		CAR						= '▒'
+		STATION					= '▓'
 
 		alias_method :original_to_s, :to_s
 		attr_reader :map
@@ -104,6 +105,7 @@ module Highway
 
 				# Car!
 				return CAR if piece.car
+				return STATION if piece.station
 
 				# Cross road
 				return NORTH_EAST_SOUTH_WEST if piece.north and piece.east and piece.south and piece.west

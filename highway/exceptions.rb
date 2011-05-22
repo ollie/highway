@@ -6,12 +6,14 @@ module Highway
 	end
 
 	class NoRoadException < Exception
-		def initialize( meth )
+		def initialize( meth = nil )
 			@meth = meth
 		end
 
 		def message
-			"You cannot go #{ @meth.capitalize }!"
+			if @meth
+				"You cannot go #{ @meth.capitalize }!"
+			end
 		end
 	end
 end

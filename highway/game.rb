@@ -8,6 +8,9 @@ module Highway
 
 		def start_at( coords )
 			@car.drive_on @road.piece_at coords
+		rescue NoRoadException => e
+			puts "There is no road at #{ coords }!"
+			exit
 		end
 
 		def start
