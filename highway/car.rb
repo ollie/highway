@@ -27,7 +27,7 @@ module Highway
 		end
 
 		def method_missing( meth, *args, &block )
-			if meth.match /^(north|east|south|west)$/
+			if meth.match /^w|d|s|a|north|east|south|west$/
 				self.class.send :define_method, meth, do
 					begin
 						raise NoRoadException, meth if cannot? meth
@@ -56,10 +56,19 @@ module Highway
 			end
 		end
 
-		private
-
-			def max_fuel
-				@fuel = MAX_FUEL
+		def drive_around_short
+			3.times do
+				6.times { w }
+				7.times { a }
+				1.times { s }
+				6.times { a }
+				5.times { s }
+				13.times { d }
 			end
+		end
+
+		def max_fuel
+			@fuel = MAX_FUEL
+		end
 	end
 end

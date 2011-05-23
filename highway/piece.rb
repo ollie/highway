@@ -9,6 +9,21 @@ module Highway
 			yield self if block_given?
 		end
 
+		def method_missing( meth, *args, &block )
+			case meth
+			when /^w|north$/
+				north
+			when /^d|east$/
+				east
+			when /^s|south$/
+				south
+			when /^a|west$/
+				west
+			else
+				super
+			end
+		end
+
 		def row
 			@coords.first
 		end

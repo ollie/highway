@@ -1,3 +1,6 @@
+require 'highline/system_extensions'
+include HighLine::SystemExtensions
+
 module Highway
 	class Game
 		attr_accessor :canvas, :road, :car
@@ -14,8 +17,29 @@ module Highway
 		end
 
 		def start
+			@car.max_fuel
 			@canvas.draw
-			@car.drive_around
+			#@car.drive_around
+			#@car.drive_around_short
+			drive
 		end
+
+		private
+
+			def drive
+				catch :quit do
+					loop do
+						print "Which way to go? [wsadq]: "
+						ch = get_character.chr
+						unless ch.match /^[aswdq]$/
+							puts
+							next
+						end
+						throw :quit if ch == 'q'
+						@car.send ch
+					end
+				end
+				puts
+			end
 	end
 end
