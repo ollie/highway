@@ -18,8 +18,8 @@ module Highway
 		NORTH_EAST_SOUTH		= '├'
 		NORTH_EAST_SOUTH_WEST	= '┼'
 		ORPHAN					= 'x'
-		CAR						= '▒'
-		STATION					= '▓'
+		CAR						= '▓'
+		STATION					= '▒'
 
 		alias_method :original_to_s, :to_s
 		attr_reader :map
