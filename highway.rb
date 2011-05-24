@@ -8,6 +8,4 @@ module Highway
 	autoload :Map,				'./highway/map'
 	autoload :NoFuelException,	'./highway/exceptions'
 	autoload :NoRoadException,	'./highway/exceptions'
-
-	extend self
 end
