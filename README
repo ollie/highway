@@ -1,17 +1,44 @@
 ruby example.rb
+ruby example.rb maps/map2.txt
+ruby example.rb maps/map2.txt 19,7
 
-┌─┬────────────────────┐
-│ │      Highway!      │
-│ │01234567890123456789│
-├─┼────────────────────┤
-│0│   ┌─┐              │
-│1│   │ │   ▒──────┐   │
-│2│   ├─┼─┬┬┤      │   │
-│3│  ─┤ │ ├┼┼──    │   │
-│4│   │ │ └┴┘      │   │
-│5│   │            │   │
-│6│   │            │   │
-│7│   └────────────┘   │
-│8│                    │
-│9│                    │
-└─┴────────────────────┘
+┌─┬──────────────────────────────────────────┐
+│ │                 Highway!                 │
+│ │012345678901234567890123456789012345678901│
+├─┼──────────────────────────────────────────┤
+│0│       │                                  │
+│1│       │                                  │
+│2│       │                                  │
+│3│       │                                  │
+│4│       │                                  │
+│5│       │                                  │
+│6│       │                     ┌────────────│
+│7│       │                     │            │
+│8│       │                     │            │
+│9│       │                     │            │
+│0│       └─────────────────────┤            │
+│1│                             ▓            │
+│2│                             │            │
+│3│                             │            │
+│4│                             │            │
+│5│                             │            │
+│6│                             │            │
+│7│                             │            │
+│8│                             │            │
+│9│                             │            │
+└─┴──────────────────────────────────────────┘
+Fuel: 100 %
+Which way to go? [wsadq]:
+
+TODO
+====
+Use Trollop for options parsing
+ * ruby example.rb -m maps/map1.txt
+ * ruby example.rb -map=maps/map1.txt
+ * ruby example.rb -pos=19,7
+ * ruby example.rb -m maps/map1.txt -p 19,7
+ * ruby example.rb -map=maps/map1.txt -pos=19,7
+
+Add meta info to maps so they know about each other.
+Show coords.
+Refactor ugly code.
