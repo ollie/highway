@@ -18,6 +18,7 @@ module Highway
 
 		def start
 			@car.max_fuel
+			#@canvas.delay = 0.1
 			@canvas.draw
 			#@car.drive_around
 			#@car.drive_around_short

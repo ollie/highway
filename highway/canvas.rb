@@ -1,7 +1,6 @@
 # encoding: utf-8
 module Highway
 	class Canvas
-		DELAY = 0.1
 		# ┌─┬─┐
 		# │ │ │
 		# ├─┼─┤
@@ -24,7 +23,7 @@ module Highway
 
 		alias_method :original_to_s, :to_s
 		attr_reader :map
-		attr_accessor :car
+		attr_accessor :car, :delay
 
 		def initialize( map )
 			@map = map
@@ -55,7 +54,7 @@ module Highway
 		end
 
 		def redraw
-			sleep DELAY
+			sleep @delay if @delay
 			puts paint
 		end
 
