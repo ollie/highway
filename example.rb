@@ -1,7 +1,10 @@
 require 'pp'
 require_relative 'highway'
 
-map = Highway::Map.new 'map2.txt'
+map_name = ARGV.shift || 'maps/map1.txt'
+position = ( ARGV.shift || '11,29' ).split(',').map { |i| i.to_i }
+
+map = Highway::Map.new map_name
 #puts map.paint
 canvas = Highway::Canvas.new map
 car = Highway::Car.new
@@ -17,5 +20,5 @@ game = Highway::Game.new do |g|
 	g.car = car
 end
 
-game.start_at [7, 16]
+game.start_at position
 game.start

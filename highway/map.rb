@@ -13,9 +13,23 @@ module Highway
 
 		def paint
 			o = []
-			o << '*' * ( @cols + 2 )
-			@data.each { |row| o << '*' + row.map { |i| i || ' ' }.join + '*' }
-			o << '*' * ( @cols + 2 )
+			o << '  ' + '*' * ( @cols + 2 )
+			@data.each_with_index do |row, row_index| 
+				tmp = []
+				if row_index % 10 == 0
+					tmp << row_index.to_s.split(//).first
+				else
+					tmp << ' '
+				end
+				tmp << row_index.to_s.split(//).last
+				tmp << '*'
+				tmp << row.map { |i| i || ' ' }.join
+				tmp << '*'
+				o << tmp.join
+			end
+			o << '  ' + '*' * ( @cols + 2 )
+			o << '   ' + (0...@cols).to_a.map { |i| i.to_s.split(//).last }.join
+			o << '   ' + (0...@cols).to_a.map { |i| i % 10 == 0 ? i.to_s.split(//).first : ' ' }.join
 			o.join "\n"
 		end
 
@@ -27,7 +41,7 @@ module Highway
 
 			def parse_data
 				@raw.each do |line|
-					matches = line.match /^\*([ xS]+)\*$/
+					matches = line.match /^[ 0-9]?\*([ xS]+)\*$/
 					next if matches.nil? or matches[1].nil?
 					pieces = matches[1].split( // ).map { |i| i.strip.empty? ? nil : i }
 					@rows += 1

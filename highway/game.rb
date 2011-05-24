@@ -12,7 +12,23 @@ module Highway
 		def start_at( coords )
 			@car.drive_on @road.piece_at coords
 		rescue NoRoadException => e
-			puts "There is no road at #{ coords }!"
+			system 'clear'
+			possible_road = @road.pieces.find_all do |i|
+				i.coords.north == coords ||
+				i.coords.east == coords ||
+				i.coords.south == coords ||
+				i.coords.west == coords
+			end
+			puts @canvas.map.paint
+			puts "There is no road at #{ coords }."
+			if possible_road.size > 1
+				puts "Did you mean one of those #{ possible_road.map { |i| i.coords.to_s }.join ', ' }?"
+			elsif possible_road.size == 1
+				puts "Did you mean one #{ possible_road.to_s }?"
+			else
+				puts "And there is no road around, so here is the list of all pieces."
+				puts @road.pieces.map { |i| i.coords.to_s }.join ', '
+			end
 			exit
 		end
 
