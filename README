@@ -42,3 +42,8 @@ Use Trollop for options parsing
 Add meta info to maps so they know about each other.
 Show coords.
 Refactor ugly code.
+
+Maps
+====
+x - Road
+S - Fuel station
