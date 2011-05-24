@@ -32,14 +32,9 @@ Which way to go? [wsadq]:
 
 TODO
 ====
-Use Trollop for options parsing
- * ruby example.rb -m maps/map1.txt
- * ruby example.rb -map=maps/map1.txt
- * ruby example.rb -pos=19,7
- * ruby example.rb -m maps/map1.txt -p 19,7
- * ruby example.rb -map=maps/map1.txt -pos=19,7
-
-Add meta info to maps so they know about each other.
+Add meta info to maps
+ * So they know about each other.
+ * Define starting position.
 Refactor ugly code.
 
 Maps

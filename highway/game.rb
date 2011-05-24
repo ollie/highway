@@ -10,6 +10,7 @@ module Highway
 		end
 
 		def start_at( coords )
+			coords = coords.split(',').map { |i| i.to_i } if coords.is_a? String
 			@car.drive_on @road.piece_at coords
 		rescue NoRoadException => e
 			system 'clear'
