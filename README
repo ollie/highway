@@ -41,6 +41,8 @@ Add meta info to maps
  * So they know about each other.
  * Define starting position.
 Refactor ugly code.
+Use Curses?
+Print legend?
 
 Maps
 ====
