@@ -1,10 +1,10 @@
 module Highway
 	class Map
 		alias_method :original_to_s, :to_s
-		attr_reader :raw, :data, :coords, :rows, :cols
+		attr_reader :raw, :data, :coords, :rows, :cols, :settings
 
 		def initialize( map_file )
-			@data, @coords, @rows, @cols = [], [], 0, 0
+			@data, @coords, @settings, @rows, @cols = [], [], {}, 0, 0
 			@map_file = map_file
 			read_file
 			parse_data
@@ -36,11 +36,13 @@ module Highway
 		private
 
 			def read_file
-				@raw = File.read( @map_file ).split( "\n" )
+				@raw = File.read @map_file
+				matches = @raw.match /^(-{3}.*?)(?=-{3})/m
+				@settings = YAML.load( matches[1] ) if matches && matches[1]
 			end
 
 			def parse_data
-				@raw.each do |line|
+				@raw.split("\n").each do |line|
 					matches = line.match /^[ 0-9]?\*([ xS]+)\*$/
 					next if matches.nil? or matches[1].nil?
 					pieces = matches[1].split( // ).map { |i| i.strip.empty? ? nil : i }

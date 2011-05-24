@@ -1,4 +1,3 @@
-require 'pp'
 require 'trollop'
 require_relative 'highway'
 
@@ -23,5 +22,4 @@ game = Highway::Game.new do |g|
 	g.car = car
 end
 
-game.start_at opts[:pos]
 game.start

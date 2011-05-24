@@ -5,7 +5,7 @@ module Highway
 		attr_accessor :piece, :canvas, :fuel
 
 		def initialize
-			max_fuel
+			refuel
 		end
 
 		def drive_on( piece )
@@ -15,7 +15,7 @@ module Highway
 			@piece = piece
 			@piece.car = self
 			@fuel -= 1
-			max_fuel if @piece.station
+			refuel if @piece.station
 		end
 
 		def can?( direction )
@@ -67,7 +67,7 @@ module Highway
 			end
 		end
 
-		def max_fuel
+		def refuel
 			@fuel = MAX_FUEL
 		end
 	end

@@ -9,9 +9,13 @@ module Highway
 			yield self if block_given?
 		end
 
-		def start_at( coords )
+		def start
+			coords = @canvas.map.settings['start']
 			coords = coords.split(',').map { |i| i.to_i } if coords.is_a? String
 			@car.drive_on @road.piece_at coords
+			@car.refuel
+			@canvas.draw
+			drive
 		rescue NoRoadException => e
 			system 'clear'
 			possible_road = @road.pieces.find_all do |i|
@@ -31,15 +35,6 @@ module Highway
 				puts @road.pieces.map { |i| i.coords.to_s }.join ', '
 			end
 			exit
-		end
-
-		def start
-			@car.max_fuel
-			#@canvas.delay = 0.1
-			@canvas.draw
-			#@car.drive_around
-			#@car.drive_around_short
-			drive
 		end
 
 		private

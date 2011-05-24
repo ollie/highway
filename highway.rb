@@ -1,3 +1,5 @@
+autoload :YAML,					'yaml'
+
 module Highway
 	autoload :Array,			'./highway/core_ext/array'
 	autoload :Game,				'./highway/game'

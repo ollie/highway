@@ -65,9 +65,10 @@ module Highway
 			# │ │01234567890123│
 			# ├─┼──────────────┤
 			def header
+				title = @map.settings['title'] || 'Highway!'
 				o = []
 				o << EAST_SOUTH + EAST_WEST + EAST_SOUTH_WEST + EAST_WEST * cols + SOUTH_WEST
-				o << NORTH_SOUTH + ' ' + NORTH_SOUTH + 'Highway!'.center( cols ) + NORTH_SOUTH
+				o << NORTH_SOUTH + ' ' + NORTH_SOUTH + title.center( cols ) + NORTH_SOUTH
 				o << NORTH_SOUTH + ' ' + NORTH_SOUTH + (0..cols - 1).to_a.map { |i| i.to_s.split( // ).last }.join.ljust( cols ) + NORTH_SOUTH
 				o << NORTH_EAST_SOUTH + EAST_WEST + NORTH_EAST_SOUTH_WEST + EAST_WEST * cols + NORTH_SOUTH_WEST
 				o.join "\n"
