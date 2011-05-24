@@ -96,6 +96,7 @@ module Highway
 				o = []
 				o << NORTH_EAST + EAST_WEST + NORTH_EAST_WEST + EAST_WEST * cols + NORTH_WEST
 				o << "Fuel: #{ @car.fuel } %"
+				o << "Position: #{ @car.piece.coords }"
 				o.join "\n"
 			end
 
