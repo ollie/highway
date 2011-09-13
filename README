@@ -24,6 +24,7 @@ $ ruby init.rb --pos=10,20                     # Same thing
 $ ruby init.rb -m maps/002.txt -p 15,10        # Start in level 2 on row 15, column 20
 $ ruby init.rb --map=maps/002.txt --pos=15,10  # Same thing
 
+Note: GitHub breaks the ASCII image.
 ┌─┬──────────────────────────────────────────┐
 │ │                 Level 1                  │
 │ │012345678901234567890123456789012345678901│
