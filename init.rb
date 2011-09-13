@@ -2,8 +2,8 @@ require 'trollop'
 require_relative 'highway'
 
 opts = Trollop.options do
-	opt :map, 'Which map to load? Defaults to map/001.txt.', :short => :m, :type => String, :default => 'maps/001.txt'
-	opt :pos, 'Start at which position? For example "19,29" starts at row 19 column 29.', :short => :p, :type => String, :default => '19,29'
+  opt :map, 'Which map to load? Defaults to map/001.txt.', :short => :m, :type => String, :default => 'maps/001.txt'
+  opt :pos, 'Start at which position? For example "19,29" starts at row 19 column 29.', :short => :p, :type => String
 end
 
 map = Highway::Map.new opts[:map]
@@ -17,9 +17,9 @@ road.init_pieces canvas
 canvas.place_pieces road.pieces
 
 game = Highway::Game.new do |g|
-	g.canvas = canvas
-	g.road = road
-	g.car = car
+  g.canvas = canvas
+  g.road = road
+  g.car = car
 end
 
-game.start
+game.start opts[:pos]

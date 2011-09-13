@@ -1,21 +1,31 @@
+Warning
+=======
+This game is not finished!
+
 Installation
 ============
-git clone git://github.com/ollie/highway.git
-cd highway
-bundle install
+$ git clone git://github.com/ollie/highway.git
+$ cd highway
+$ bundle install
 
 Running the game
 ================
-ruby example.rb
-ruby example.rb -m maps/002.txt
-ruby example.rb -p 19,7
-ruby example.rb -m maps/002.txt -p 19,7
-ruby example.rb --map=maps/002.txt
-ruby example.rb --pos=19,7
-ruby example.rb --map=maps/002.txt --pos=19,7
+$ ruby init.rb --help
+Options:
+  --map, -m <s>:   Which map to load? Defaults to map/001.txt. (Default: maps/001.txt)
+  --pos, -p <s>:   Start at which position? For example "19,29" starts at row 19 column 29.
+     --help, -h:   Show this message
+
+$ ruby init.rb                                 # Start from the beginning
+$ ruby init.rb -m maps/002.txt                 # Start in level 2
+$ ruby init.rb --map=maps/002.txt              # Same thing
+$ ruby init.rb -p 10,20                        # Start from the beginning on row 10 column 20
+$ ruby init.rb --pos=10,20                     # Same thing
+$ ruby init.rb -m maps/002.txt -p 15,10        # Start in level 2 on row 15, column 20
+$ ruby init.rb --map=maps/002.txt --pos=15,10  # Same thing
 
 ┌─┬──────────────────────────────────────────┐
-│ │                 Highway!                 │
+│ │                 Level 1                  │
 │ │012345678901234567890123456789012345678901│
 ├─┼──────────────────────────────────────────┤
 │0│       │                                  │
@@ -33,14 +43,14 @@ ruby example.rb --map=maps/002.txt --pos=19,7
 │2│                             │            │
 │3│                             │            │
 │4│                             │            │
-│5│                             │            │
+│5│                             ▓            │
 │6│                             │            │
 │7│                             │            │
 │8│                             │            │
-│9│                             ▓            │
+│9│                             │            │
 └─┴──────────────────────────────────────────┘
 Fuel: 100 %
-Position: [19, 29]
+Position: [15, 29]
 Which way to go? [wsadq]:
 
 TODO
