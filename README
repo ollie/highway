@@ -1,3 +1,11 @@
+Installation
+============
+git clone git://github.com/ollie/highway.git
+cd highway
+bundle install
+
+Running the game
+================
 ruby example.rb
 ruby example.rb -m maps/002.txt
 ruby example.rb -p 19,7
