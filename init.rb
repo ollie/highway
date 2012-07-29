@@ -1,3 +1,5 @@
+require 'bundler/setup'
+
 require 'trollop'
 require_relative 'highway'
 

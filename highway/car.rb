@@ -28,7 +28,7 @@ module Highway
 
     def method_missing( meth, *args, &block )
       if meth.match /^w|d|s|a|north|east|south|west$/
-        self.class.send :define_method, meth, do
+        self.class.send :define_method, meth do
           begin
             raise NoRoadException, meth if cannot? meth
             drive_on @piece.send meth

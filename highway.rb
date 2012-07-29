@@ -1,5 +1,4 @@
 require 'yaml'
-require 'pry' # Debugging
 
 module Highway
   autoload :Array,            './highway/core_ext/array'
